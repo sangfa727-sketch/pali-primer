@@ -22,7 +22,7 @@ Execution checkpoint for recovering the original Abhidhamma application before P
 | `wf_*` inventory | 492 navigation labels | EXACT |
 | Section prefixes | s0–s9 plus shared/other | EXACT |
 | AndroidManifest.xml | package `org.dhammadarna.abhidhamma_myanmar`, version 1.2, launcher `IndexActivityWithTitleBar` | EXACT |
-| activity_main.xml | Original menu resource with item/id/icon/order/title attributes | EXACT |
+| activity_main.xml | Original compiled menu contains **2 item elements**; each has id/icon/orderInCategory/showAsAction/title attributes; title resource IDs are **0x7f0501ef** and **0x7f0501f0** | EXACT |
 | main_start_view.xml | Main list/expandable-list rendering layer | EXACT |
 | main_start_view_listitem.xml | Main list item rendering layer | EXACT |
 | detail_start_view.xml | Detail rendering layer | EXACT |
@@ -53,6 +53,15 @@ Every one of the 492 `wf_*` labels must record:
 - verification state: EXACT/PARTIAL/UNRESOLVED.
 
 No guessed mapping is permitted.
+
+### Newly verified menu-resource evidence
+
+The compiled `activity_main.xml` was decoded at the binary-XML structure level:
+- exactly **2** `item` nodes are present;
+- both item nodes contain the standard Android attributes `id`, `icon`, `orderInCategory`, `showAsAction`, and `title`;
+- their title attributes reference resource IDs `0x7f0501ef` and `0x7f0501f0`;
+- the menu resource itself does **not** contain literal Burmese menu titles in its string pool, so the titles must be resolved through `resources.arsc`;
+- therefore the two menu entries are now structurally EXACT, but their semantic labels/dispatch targets remain PARTIAL until the resource table/runtime evidence resolves them.
 
 ## Master Structure — target 100%
 
