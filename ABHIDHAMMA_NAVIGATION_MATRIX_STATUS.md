@@ -47,3 +47,16 @@ Continue the navigation matrix using every accessible source artifact. When the 
 ## Completion rule
 
 The matrix is complete only when all 492 entries are explicitly classified and the final hierarchy is evidence-backed or explicitly marked UNRESOLVED.
+
+
+## Newly verified compiled-resource evidence
+
+- Original compiled `AndroidManifest.xml` exposes package `org.dhammadarna.abhidhamma_myanmar`, version `1.2`, and launcher activity `IndexActivityWithTitleBar`.
+- Original compiled `res/menu/activity_main.xml` contains menu item attributes including id, icon, orderInCategory, showAsAction, and title.
+- Original compiled layouts `main_start_view.xml`, `main_start_view_listitem.xml`, `detail_start_view.xml`, and `detail_start_view_listitem.xml` were retrieved as base64 binary resources.
+- `main_start_view.xml` contains compiled references to `ListView` and `ExpandableListView`; detail layouts contain compiled `TextView`/content-rendering structures.
+- These artifacts prove the original main-menu and main/detail rendering layers, but do not by themselves prove exact `wf_*` parent/child mapping.
+
+## Evidence boundary
+
+Compiled resource IDs constrain the navigation matrix, but entries are not promoted to EXACT without runtime/resource evidence. DEX decoding remains required for method-level navigation behavior.
