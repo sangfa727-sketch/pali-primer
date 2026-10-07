@@ -43,7 +43,7 @@ Required evidence sources:
 
 Current blocker:
 
-The available GitHub connector can retrieve the binary artifact metadata but has not provided a usable decoded classes.dex payload in this environment.
+The original `classes.dex` is confirmed in `sangfa727-sketch/Abhidhamma`, and `Abhidhamma.apk` is also present in the Pali Primer recovery branch. The available GitHub connector can retrieve their metadata but cannot return usable binary bytes for decoding because these artifacts are not UTF-8 text. A local decoder therefore still needs a usable APK/DEX binary input.
 
 Until it is decoded, runtime navigation relationships remain partially verified.
 
@@ -95,7 +95,7 @@ The following are prohibited during recovery:
 
 The source content is sufficiently recovered to continue verification and documentation.
 
-The project is not yet at final exact-runtime recovery because the classes.dex navigation layer remains unresolved.
+The project is not yet at final exact-runtime recovery because the classes.dex navigation layer remains unresolved. The formal 100% completion gates are documented in `ABHIDHAMMA_100_PERCENT_GATE.md`.
 
 ## Definition of done
 
