@@ -72,9 +72,7 @@ chars are almost always body content; items < 30 chars are almost always titles.
 
 ## Key-name Cross-referencing (IMPORTANT)
 
-Array keys and string keys are related by a naming pattern. A string `wf_XXX`
-usually names the menu label for the array whose key matches `XXX` (or a
-close variant). Use this to build the navigation tree.
+Array keys and `wf_*` string keys often share naming patterns. This is useful for investigation, but it is **not proof of the original runtime relationship**. A matching suffix, prefix, position, or similar text must not be promoted to an exact navigation mapping without supporting resource/runtime evidence. If the relationship is not proven, record it as `PARTIAL` or `UNRESOLVED`.
 
 **Example pair:**
 - `strings["wf_s0_panama_objective"]` = `"ပဏာမနှင့် ပဋိညာဉ်"` — menu label
@@ -94,18 +92,30 @@ If the target app uses SQLite / Room / Isar / sqflite:
 
 ```
 Table: abhidhamma_topics
-  - key TEXT PRIMARY KEY         -- e.g. "s0_panama_objective"
-  - menu_label TEXT               -- from strings["wf_" + key]
-  - parent_key TEXT (nullable)   -- for hierarchy (derive from key prefix)
-  - order_index INTEGER
+  - key TEXT PRIMARY KEY
+  - menu_label TEXT
+  - parent_key TEXT (nullable)    -- only when evidence-backed
+  - order_index INTEGER (nullable)
+  - verification_state TEXT       -- EXACT | PARTIAL | UNRESOLVED
+  - source_reference TEXT
 
 Table: abhidhamma_paragraphs
   - id INTEGER PRIMARY KEY AUTOINCREMENT
   - topic_key TEXT (FK → topics.key)
-  - position INTEGER              -- array index (0-based)
-  - is_heading BOOLEAN            -- true if len(text) < 30 AND position is even
-  - text TEXT                     -- the raw Burmese content
+  - position INTEGER              -- original array index (0-based)
+  - content_role TEXT (nullable)  -- heading | body | list | table | note | analysis | unknown
+  - text TEXT                     -- raw source content, unchanged
 ```
+
+`parent_key` must not be derived from a key prefix alone. Paragraph roles must not be inferred solely from text length or position when exact source/runtime evidence is required.
+
+## Evidence Rules
+1. Preserve every original array key and item order.
+2. Preserve duplicate-looking arrays and variants; never deduplicate by text.
+3. Never silently correct spelling, punctuation, numbering, Unicode, or line breaks.
+4. Treat key similarity, item length, position, and prefix conventions as investigation heuristics only.
+5. A relationship is `EXACT` only when supported by surviving source/resource/runtime evidence.
+6. If evidence is insufficient, use `PARTIAL` or `UNRESOLVED` rather than guessing.
 
 ## Rendering Notes
 1. Font: use Noto Sans Myanmar or a similar Unicode Myanmar font. Do NOT use
