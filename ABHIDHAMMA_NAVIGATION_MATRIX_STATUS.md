@@ -60,3 +60,15 @@ The matrix is complete only when all 492 entries are explicitly classified and t
 ## Evidence boundary
 
 Compiled resource IDs constrain the navigation matrix, but entries are not promoted to EXACT without runtime/resource evidence. DEX decoding remains required for method-level navigation behavior.
+
+
+## Latest accessible-source audit — 2026-10-07
+
+- Searched the recovery branch for textual `wf_*` navigation references; no additional searchable source file was found.
+- Searched the original `sangfa727-sketch/Abhidhamma` repository for `IndexActivityWithTitleBar`, layout-name references, and representative `wf_*` keys; no searchable source excerpts were returned.
+- Original repository inventory confirms the surviving navigation-relevant artifacts are compiled/binary resources plus the DEX: `classes.dex` (1,658,392 bytes), `resources.arsc` (1,269,092 bytes), compiled layouts, and `activity_main.xml`.
+- `abhidhamma_content.min.json` remains present with SHA `64181dd75f31186216f6276351d793511ba78922`, but the connector returns zero content bytes for this large artifact.
+
+### Result
+
+No new source evidence was found that can safely promote navigation relationships to EXACT. Existing mappings remain unchanged. The next decisive evidence source is still a locally decodable APK/DEX, after which resource IDs and runtime dispatch can be reconciled against the 492-entry matrix.
