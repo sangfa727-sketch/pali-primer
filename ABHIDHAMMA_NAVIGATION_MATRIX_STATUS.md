@@ -1,0 +1,49 @@
+# Abhidhamma Navigation Matrix — Recovery Status
+
+## Purpose
+
+Track the 492 original `wf_*` navigation labels before Pali Primer implementation.
+
+## Rules
+
+Each navigation relationship must be classified as:
+
+- **EXACT** — source evidence proves the mapping.
+- **PARTIAL** — some source evidence exists, but the complete relationship is not proven.
+- **UNRESOLVED** — insufficient surviving evidence; never guess.
+
+## Current verified facts
+
+- Original navigation labels: **492 `wf_*`**
+- Original arrays: **705**
+- Original array items: **5,398**
+- Content source artifact: `abhidhamma_content.min.json`
+- Original package: `org.dhammadarna.abhidhamma_myanmar`
+- Version: `1.2`
+
+## Matrix completion gate
+
+Before UI/UX implementation:
+
+1. Every 492 `wf_*` labels must have a matrix record.
+2. Each record must preserve the original label and key.
+3. Matching array key must be recorded when proven.
+4. Shared-array reuse must be recorded.
+5. Source order must be recorded where recoverable.
+6. Parent/child relationship must carry a verification state.
+7. No key-prefix inference may be promoted to EXACT without supporting evidence.
+8. The final matrix must be traceable to the source artifact.
+
+## Current limitation
+
+The connector can expose the recovered textual schema and source metadata, but the binary APK/`classes.dex` cannot currently be decoded through the available GitHub connector. Therefore runtime-derived hierarchy remains unproven.
+
+This file is a checkpoint, not a claim that all 492 relationships are complete.
+
+## Next execution step
+
+Continue the navigation matrix using every accessible source artifact. When the original APK/DEX becomes available to a local decoder, reconcile the matrix against runtime resource IDs and navigation methods before freezing it.
+
+## Completion rule
+
+The matrix is complete only when all 492 entries are explicitly classified and the final hierarchy is evidence-backed or explicitly marked UNRESOLVED.
